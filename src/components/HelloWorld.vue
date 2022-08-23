@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-<City></City>
+<City name="Valence" weather="Peu nuageux" temperature="20.55" updatedAt="23/08/2022"></City>
 </template>
 
 <style scoped>

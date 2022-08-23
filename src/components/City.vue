@@ -1,13 +1,12 @@
 <script>
+
 export default {
-    data() {
-    return {
-    name: 'Valence', 
-    weather: 'Peu nuageux', 
-    temperature: 20.55,
-    updatedAt: new Date().toLocaleDateString() 
-        }
-} 
+    props: {
+    name: String, 
+    weather: String, 
+    temperature: Float32Array,
+    updatedAt: Date
+    }
 }
 </script>
 
