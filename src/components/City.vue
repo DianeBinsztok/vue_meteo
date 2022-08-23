@@ -1,4 +1,5 @@
 <script>
+import { format } from 'timeago.js'; 
 
 export default {
     props: {
@@ -6,6 +7,11 @@ export default {
     weather: String, 
     temperature: Float32Array,
     updatedAt: Date
+    },
+    methods: {
+        convertToTimeago(date) {
+            return format(date);
+        }
     }
 }
 </script>
@@ -17,7 +23,7 @@ export default {
     <ul>
       <li>{{weather}}</li>
       <li>{{temperature}} C°</li>
-      <li>{{updatedAt}}</li>
+      <li>{{convertToTimeago(updatedAt)}}</li>
     </ul>
   </div>
 </template>

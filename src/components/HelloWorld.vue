@@ -1,13 +1,14 @@
 <script setup>
-
 import City from "./City.vue";
-
+import { format, render, cancel, register } from 'timeago.js'; 
+/*
 defineProps({
   msg: {
     type: String,
     required: true,
   },
 });
+*/
 </script>
 
 <template>
@@ -20,16 +21,13 @@ h1 {
   font-size: 2.6rem;
   top: -10px;
 }
-
 h3 {
   font-size: 1.2rem;
 }
-
 .greetings h1,
 .greetings h3 {
   text-align: center;
 }
-
 @media (min-width: 1024px) {
   .greetings h1,
   .greetings h3 {
