@@ -17,13 +17,11 @@ export default {
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">Welcome</h1>
     <h3>{{name}}</h3>
     <ul>
       <li>{{weather}}</li>
       <li>{{temperature}} C°</li>
       <li>{{formatedDate}}</li>
     </ul>
-  </div>
+
 </template>

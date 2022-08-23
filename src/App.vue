@@ -1,5 +1,5 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+import CitiesList from "./components/CitiesList.vue";
 //import TheWelcome from "./components/TheWelcome.vue";
 </script>
 
@@ -14,7 +14,7 @@ import HelloWorld from "./components/HelloWorld.vue";
     />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <CitiesList msg="You did it!" />
     </div>
   </header>
 
