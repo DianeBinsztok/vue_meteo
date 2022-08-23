@@ -8,9 +8,9 @@ export default {
     temperature: Float32Array,
     updatedAt: Date
     },
-    methods: {
-        convertToTimeago(date) {
-            return format(date);
+    computed: {
+        formatedDate() {
+            return format(this.updatedAt);
         }
     }
 }
@@ -23,7 +23,7 @@ export default {
     <ul>
       <li>{{weather}}</li>
       <li>{{temperature}} C°</li>
-      <li>{{convertToTimeago(updatedAt)}}</li>
+      <li>{{formatedDate}}</li>
     </ul>
   </div>
 </template>
