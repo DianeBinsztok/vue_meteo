@@ -43,10 +43,13 @@ export default {
   <!--v-for bouclera sur les data cities
   les autres props deviendront dynamiques avec : -->
   <ul>
-    <li>
+    <li v-for="city in cities" >
+      <router-link  :to="{name: 'city', params: {id: city.id}}" >
+        Voir la city : {{ city.name}}
+      </router-link>
+     <router-view>
 
-        <City v-for="city in cities" :id="city.id" :name="city.name" :weather="city.weather" :temperature="city.temperature" :updatedAt="city.updatedAt"/>
-
+     </router-view>
     </li>
   </ul>
      

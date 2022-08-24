@@ -22,7 +22,7 @@ import Random from "./components/Random.vue"
   </header>
 
   <main> 
-      <router-link to="./cities">Voir la météo des villes</router-link>
+      <router-link to="/cities">Voir la météo des villes</router-link>
       <router-link to="/random">Voir une page random</router-link>
       <router-link to="/">Retour à l'accueil</router-link>
      <router-view> </router-view>
