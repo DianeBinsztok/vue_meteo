@@ -5,7 +5,7 @@ import City from "./City.vue";
 import { get } from "axios";
 import { ref, onMounted } from "vue";
 
-// J'appelle l'API avec ma clé utilisateur:
+// je n'ai pas besoin de l'objet data quand mon script est en mode setup
 /*
 const data = {
    cities: [],
@@ -16,7 +16,7 @@ const data = {
 //ref est une variable dont vue va écouter les changement. la méthode ref() est un équivalent de addEventListener
 // Vue surveillera les changements de cet objet et accèdera à ses valeurs data par cities.value
 let cities = ref([]);
-
+console.log();
 onMounted(async () => {
   try {
     const response = await get(
@@ -24,18 +24,16 @@ onMounted(async () => {
     );
     console.log(response);
 
-    //map retourne un objet à chaque tour de boucle sur le tableau et le restitue dans cities.value
-    cities.value = response.data.list.map((city) => {
-      return {
-        name: city.name,
-        weather: city.weather[0].description,
-        temperature: city.main.temp,
-        // dt est un timestamps : un nb de secondes depuis 1970
-        // je le change en milisecondes pour qu'il soit reconnaissable par l'objet js Date
-        //
-        updatedAt: new Date(city.dt * 1000),
-      };
-    });
+    //le map a une seule valeur de retour : on peut encapsuler cette valeur dans () sans encapsuler les instruction dans {}
+    cities.value = response.data.list.map((city) => ({
+      name: city.name,
+      weather: city.weather[0].description,
+      temperature: city.main.temp,
+      // dt est un timestamps : un nb de secondes depuis 1970
+      // je le change en milisecondes pour qu'il soit reconnaissable par l'objet js Date
+      //
+      updatedAt: new Date(city.dt * 1000),
+    }));
   } catch (error) {
     console.error(error);
   }
