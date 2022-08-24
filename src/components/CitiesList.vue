@@ -38,13 +38,15 @@ export default {
 
 <template>
   <div class="greetings">
-  <h1 class="green">Météo avec Vue.js</h1>
+  <h1 class="green">Météo des Villes</h1>
   </div>
   <!--v-for bouclera sur les data cities
   les autres props deviendront dynamiques avec : -->
   <ul>
     <li>
- <City v-for="city in cities" :name="city.name" :weather="city.weather" :temperature="city.temperature" :updatedAt="city.updatedAt"></City>
+
+        <City v-for="city in cities" :id="city.id" :name="city.name" :weather="city.weather" :temperature="city.temperature" :updatedAt="city.updatedAt"/>
+
     </li>
   </ul>
      

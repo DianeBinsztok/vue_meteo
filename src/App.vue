@@ -1,6 +1,9 @@
 <script setup>
+import City from "./components/City.vue"
 import CitiesList from "./components/CitiesList.vue";
 //import TheWelcome from "./components/TheWelcome.vue";
+import Home from "./components/Home.vue";
+import Random from "./components/Random.vue"
 </script>
 
 <template>
@@ -14,12 +17,15 @@ import CitiesList from "./components/CitiesList.vue";
     />
 
     <div class="wrapper">
-      <CitiesList msg="You did it!" />
+      <h1>Météo avec Vue.js</h1>
     </div>
   </header>
 
-  <main>
-    <TheWelcome />
+  <main> 
+      <router-link to="./cities">Voir la météo des villes</router-link>
+      <router-link to="/random">Voir une page random</router-link>
+      <router-link to="/">Retour à l'accueil</router-link>
+     <router-view> </router-view>
   </main>
 </template>
 

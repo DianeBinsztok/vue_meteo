@@ -1,8 +1,5 @@
 <template>
-<h2 class="green">Bienvenue sur une page d'accueil random</h2>
-<h2>Je teste le routage avec Vue.js</h2>
-
-
+<h2 class="green">Ceci est une autre page random</h2>
 </template>
 
 <style scoped>
