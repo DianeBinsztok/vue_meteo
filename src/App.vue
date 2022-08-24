@@ -1,10 +1,4 @@
-<script setup>
-import City from "./components/City.vue"
-import CitiesList from "./components/CitiesList.vue";
-//import TheWelcome from "./components/TheWelcome.vue";
-import Home from "./components/Home.vue";
-import Random from "./components/Random.vue"
-</script>
+
 
 <template>
   <header>

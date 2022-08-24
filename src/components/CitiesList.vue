@@ -1,58 +1,64 @@
-<script>
+<script setup>
 import City from "./City.vue";
 
-export default {
-  components:{
-    City
-  },
-  data() {
-    return {
-      cities: [
-    {
-      id: 1,
-      name: 'Valence',
-      weather: 'Ensoleillé',
-      temperature: 22.0,
-      updatedAt: new Date()
-    },
-    {
-      id: 2,
-      name: 'Paris',
-      weather: 'Peu nuageux',
-      temperature: 19.5,
-      updatedAt: new Date()
-        },
-        {
-      id: 3,
-      name: 'Marseille',
-      weather: 'Ensoleillé',
-      temperature: 28.5,
-      updatedAt: new Date()
-    }
-  ]
-    }
-  }
-}
+// Je require la librairie axios qui permet de faire des requêtes HTTP vers une API
+import { get } from "axios";
+import { ref, onMounted } from "vue";
 
+// J'appelle l'API avec ma clé utilisateur:
+/*
+const data = {
+   cities: [],
+            loading: false,
+            error: null
+}
+*/
+//ref est une variable dont vue va écouter les changement. la méthode ref() est un équivalent de addEventListener
+// Vue surveillera les changements de cet objet et accèdera à ses valeurs data par cities.value
+let cities = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await get(
+      "https://api.openweathermap.org/data/2.5/find?lat=45.188&lon=5.724&cnt=20&cluster=yes&lang=fr&units=metric&APPID=61f50f35bbbbf8e0614462bc819a3cd8"
+    );
+    console.log(response);
+
+    //map retourne un objet à chaque tour de boucle sur le tableau et le restitue dans cities.value
+    cities.value = response.data.list.map((city) => {
+      return {
+        name: city.name,
+        weather: city.weather[0].description,
+        temperature: city.main.temp,
+        // dt est un timestamps : un nb de secondes depuis 1970
+        // je le change en milisecondes pour qu'il soit reconnaissable par l'objet js Date
+        //
+        updatedAt: new Date(city.dt * 1000),
+      };
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
 </script>
 
 <template>
   <div class="greetings">
-  <h1 class="green">Météo des Villes</h1>
+    <h1 class="green">Météo des Villes</h1>
   </div>
   <!--v-for bouclera sur les data cities
   les autres props deviendront dynamiques avec : -->
   <ul>
-    <li v-for="city in cities" >
-      <router-link  :to="{name: 'city', params: {id: city.id}}" >
-        Voir la city : {{ city.name}}
-      </router-link>
-     <router-view>
-
-     </router-view>
+    <!--Ici, vue accèdera aux valeurs de cities sans le .value car cities est le ref -> l'état à surveiller-->
+    <li v-for="city in cities">
+      <City
+        :name="city.name"
+        :weather="city.weather"
+        :temperature="city.temperature"
+        :updatedAt="city.updatedAt"
+      />
     </li>
   </ul>
-     
 </template>
 
 <style scoped>

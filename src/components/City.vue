@@ -1,28 +1,29 @@
 <script>
-import { format } from 'timeago.js'; 
+import { format } from "timeago.js";
 
 export default {
-    props: {
-    name: String, 
-    weather: String, 
-    temperature: Float32Array,
-    updatedAt: Date
+  props: {
+    name: String,
+    weather: String,
+    temperature: Number,
+    updatedAt: Date,
+  },
+
+  computed: {
+    formatedDate() {
+      return format(this.updatedAt);
     },
-    computed: {
-        formatedDate() {
-            return format(this.updatedAt);
-        }
-    }
-}
+  },
+};
 </script>
 
 <template>
-    <h3 class="green">{{name}}</h3>
-    <ul>
-      <li>{{weather}}</li>
-      <li>{{temperature}} C°</li>
-      <li>{{formatedDate}}</li>
-    </ul>
+  <h3 class="green">{{ name }}</h3>
+  <ul>
+    <li>{{ weather }}</li>
+    <li>{{ temperature }} C°</li>
+    <li>{{ formatedDate }}</li>
+  </ul>
 </template>
 
 <style scoped>
@@ -39,10 +40,9 @@ h3 {
   .greetings h3 {
     text-align: left;
   }
-  ul{
+  ul {
     justify-content: space-between;
     margin: 2em;
   }
 }
 </style>
-
